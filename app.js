@@ -3,10 +3,18 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 var leds = require('rpi-ws2801');
+// const fs = require('fs');
+// const options = {
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// };
+// const http = require('https').createServer(options, app);;
+
 
 // app.use(express.static(__dirname + '/views')); // html
 app.use(express.static(__dirname + '/public')); // js, css, images
 
+let lightOn = false;
 
 app.get('/', (req, res) => {
   if (res.statusCode === 200) {
@@ -81,9 +89,8 @@ io.sockets.on('connection', function (socket) {
 
 
   socket.on('rainbow', (data) => {
-    console.log(data);
     if (data) {
-      runScript('rainbow.py', 'cy');
+      runScript('rainbow.py', 'cys');
     } else {
       runScript('turn_off.py');
       // runScript('rainbow.py', 'cysoff');
@@ -91,6 +98,10 @@ io.sockets.on('connection', function (socket) {
     socket.emit('rainbow', data);
   });
 
+
+  // emitScript(socket, 'rainbow', 'rainbow.py', 'c');
+
+  // emitScript(socket, 'rainbow', 'rainbow.py', 'cy');
 
   emitScript(socket, 'sexy-time', 'rainbow.py', 'sexy-time');
 
@@ -109,6 +120,7 @@ function emitScript(socket, msg, script, args) {
       runScript('turn_off.py');
     }
     socket.emit(msg, data);
+    socket.emit('light', data);
   });
 }
 
