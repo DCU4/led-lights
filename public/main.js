@@ -47,10 +47,13 @@ function emitMessage(el, msg) {
 socket.on('light', function(data) { //get button status from client
   console.log(data)
   let status = document.querySelector('#light-status');
+  var lightSwitch = document.getElementById("light");
   if (data == 1){
     status.innerHTML = 'On';
+    lightSwitch.checked = true;
   } else {
     status.innerHTML = 'Off';
+    lightSwitch.checked = false;
   }
 });
 
