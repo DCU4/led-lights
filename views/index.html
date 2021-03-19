@@ -4,12 +4,16 @@
     <title>LIGHTS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="192" href="lightbulb-white-192.png">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="icon shortcut" type="image/png" href="favicon.ico">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <main>
       <section class="color-picker-wrapper">
-        <h1>Pick your favvvv color</h1>
+        <h1>LED Lights</h1>
 
         <div class="switch-wrapper row">
           <p id="light-status">Off</p>
@@ -20,7 +24,7 @@
         </div>
         <div class="row">
           <p id="color-picked">Color </p>
-          <input id="color-changer" value="#FFFFFF" data-jscolor="{}"/>
+          <input id="color-changer" type="color" />
         </div>
 
         <div class="switch-wrapper row">
