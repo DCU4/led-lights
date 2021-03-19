@@ -1,0 +1,20 @@
+{
+  "short_name": "LEDS",
+  "name": "Led Lights",
+  "start_url": "/",
+  "background_color": "#444444",
+  "display": "fullscreen",
+  "theme_color": "#444444",
+  "icons": [
+    {
+      "src": "lightbulb-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "lightbulb-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
