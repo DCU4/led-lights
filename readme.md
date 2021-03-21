@@ -8,7 +8,7 @@ Using Node.js and websockets, this server lives on my raspberry pi and powers a 
 
 I put together a simple UI to perform basic commands such as on/off and changing colors through HTML inputs. I can control this from my phone, and I have it saved to the homescreen to have more of an "app" feel. The manifest.json gives some control here with the icon image to tap on and URL removed from the window.
 
-![Image of LED light control UX](/public/controls-ux.png "LED light control UX")
+<img width="100" title="LED light control UX" alt="Image of LED light control UX" src="/public/controls-ux.png" />
 
 ## TODO:
  - ~~Create a manifest.json~~
