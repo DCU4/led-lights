@@ -4,13 +4,16 @@ Using Node.js and websockets, this server lives on my raspberry pi and powers a 
 
 ---
 
-I put together a simple UI to perform basic commands such as on/off and changing colors through HTML inputs. I can control this from my phone, and I have it saved to the homescreen to have more of an "app" feel. A big todo is definitely setting up a manifest.json.
+## Controls
 
+I put together a simple UI to perform basic commands such as on/off and changing colors through HTML inputs. I can control this from my phone, and I have it saved to the homescreen to have more of an "app" feel. The manifest.json gives some control here with the icon image to tap on and URL removed from the window.
+
+![Image of LED light control UX](/public/controls-ux.png "LED light control UX")
 
 ## TODO:
- - Create a manifest.json
- - Get better at python
- - Refactor some of app.js
+ - ~~Create a manifest.json~~
+ - ~~Create images for manifest~~
+ - ~~Refactor some of app.js~~
 
 
 ## To build yourself:
