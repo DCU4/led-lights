@@ -3,14 +3,11 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 var leds = require('rpi-ws2801');
-// const fs = require('fs');
-// const options = {
-//   key: fs.readFileSync('key.pem'),
-//   cert: fs.readFileSync('cert.pem')
-// };
-// const http = require('https').createServer(options, app);;
+const cors = require('cors')
 
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
 // app.use(express.static(__dirname + '/views')); // html
 app.use(express.static(__dirname + '/public')); // js, css, images
 
@@ -30,9 +27,11 @@ app.get('/', (req, res) => {
 app.get('/turn-on', (req, res) => {
   if (res.statusCode === 200) {
 
-    res.sendFile('/views/index.html', {
-      root: __dirname
-    });
+    // res.sendFile('/views/index.html', {
+    //   root: __dirname
+    // });
+
+    turnOn();
 
   } else {
     return res.status(404);
@@ -45,6 +44,17 @@ app.get('/color', (req, res) => {
 
   if (res.statusCode === 200) {
     turnOn(255, 0, 255)
+  } else {
+    return res.status(404);
+  }
+
+});
+
+app.post('/playlist-color', (req, res) => {
+  const [r,g,b] = req.body.color.split(',');
+  console.log(r,g,b);
+  if (res.statusCode === 200) {
+    changeColor(r,g,b)
   } else {
     return res.status(404);
   }
