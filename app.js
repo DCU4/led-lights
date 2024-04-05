@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/public')); // js, css, images
 let lightOn = false;
 
 app.get('/', (req, res) => {
-  if (res.statusCode === 200) {
+  if (req.statusCode === 200) {
     res.sendFile('/views/index.html', {
       root: __dirname
     });
