@@ -14,6 +14,7 @@ I put together a simple UI to perform basic commands such as on/off and changing
  - ~~Create a manifest.json~~
  - ~~Create images for manifest~~
  - ~~Refactor some of app.js~~
+ - ~~set up cookie to check on if light is on~~
 
 
 ## To build yourself:
