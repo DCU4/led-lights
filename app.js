@@ -11,10 +11,9 @@ app.use(cors());
 // app.use(express.static(__dirname + '/views')); // html
 app.use(express.static(__dirname + '/public')); // js, css, images
 
-let lightOn = false;
 
 app.get('/', (req, res) => {
-  if (req.statusCode === 200) {
+  if (res.statusCode === 200) {
     res.sendFile('/views/index.html', {
       root: __dirname
     });
@@ -79,7 +78,6 @@ io.sockets.on('connection', function (socket) {
   // light input
   socket.on('light', (data) => {
     console.log('data onlight', data)
-    lightvalue = (data);
     if (data) {
       turnOn()
       socket.emit('light', data);
@@ -136,7 +134,7 @@ function emitScript(socket, msg, script, args) {
 
 function runScript(script, args) {
   var exec = require('child_process').exec;
-  exec(`python "${__dirname}/scripts/${script}" ${args}`, function (error, stdout, stderr) {
+  exec(`python3 "${__dirname}/scripts/${script}" ${args}`, function (error, stdout, stderr) {
     if (error) {
       console.log('errorororor', error)
     } else {
@@ -149,7 +147,7 @@ function runScript(script, args) {
 
 function turnOff() {
   var exec = require('child_process').exec;
-  exec(`python "${__dirname}/scripts/turn_off.py"`, function (error, stdout, stderr) {
+  exec(`python3 "${__dirname}/scripts/turn_off.py"`, function (error, stdout, stderr) {
     if (error) {
       console.log('errorororor', error)
     } else {
@@ -161,7 +159,7 @@ function turnOff() {
 
 function turnOn(r = 255, g = 255, b = 255) {
   var exec = require('child_process').exec;
-  exec(`python "${__dirname}/scripts/turn_on.py" ${r} ${g} ${b}`, function (error, stdout, stderr) {
+  exec(`python3 "${__dirname}/scripts/turn_on.py" ${r} ${g} ${b}`, function (error, stdout, stderr) {
     if (error) {
       console.log('errorororor', error);
     } else {
@@ -173,7 +171,7 @@ function turnOn(r = 255, g = 255, b = 255) {
 
 function changeColor(r, g, b) {
   var exec = require('child_process').exec;
-  exec(`python "${__dirname}/scripts/change_color.py" ${r} ${g} ${b}`, function (error, stdout, stderr) {
+  exec(`python3 "${__dirname}/scripts/change_color.py" ${r} ${g} ${b}`, function (error, stdout, stderr) {
     if (error) {
       console.log('errorororor', error)
     } else {
